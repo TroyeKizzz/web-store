@@ -1,4 +1,4 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
 import { auth } from "../firebase-config";
 import {
   signInWithEmailAndPassword,
@@ -6,10 +6,9 @@ import {
 } from "firebase/auth";
 
 class UserService {
-  #auth;
+  #auth = auth;
   #user;
   constructor() {
-    this.#auth = auth;
     onAuthStateChanged(this.#auth, (currentUser) => {
       this.#user = currentUser;
     });
@@ -23,7 +22,6 @@ class UserService {
         data.password
       );
       this.#user = result.user;
-      console.log(result.user);
       return result.user;
     } catch (error) {
       console.log(error.message);
@@ -42,6 +40,7 @@ class UserService {
         data.password
       );
       this.#user = result.user;
+      await updateProfile(this.#user, { displayName: data.name });
       return result.user;
     } catch (error) {
       console.log(error.message);

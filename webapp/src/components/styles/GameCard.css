@@ -1,0 +1,52 @@
+.div-game {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 350px;
+  padding: 20px;
+  margin: 10px;
+  background-color: beige;
+}
+
+.div-game-content {
+  display: inline-flex;
+}
+
+.p-game-title {
+  margin: 0px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.div-game-details {
+  margin-left: 20px;
+}
+
+.game-icon {
+  height: 250px;
+}
+
+.div-game-price {
+  display: flex;
+  flex-direction: row;
+}
+
+.div-game-price-main {
+  font-size: 50px;
+  color: red;
+}
+
+.div-game-price-cents {
+  margin-top: 10px;
+  float: right;
+  color: red;
+}
+
+.p-game-detail {
+  margin: 10px 0px;
+  font-size: 15px;
+}
+
+.span-game-detail-parameter {
+  font-weight: 600;
+}

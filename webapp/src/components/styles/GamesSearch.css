@@ -1,0 +1,12 @@
+.div-gamesearch {
+  width: 100%;
+  background-color: #1e81b0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.div-gamesearch-item {
+  color: white;
+  margin: 20px 20px;
+}

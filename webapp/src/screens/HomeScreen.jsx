@@ -1,19 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { userService } from "../firebase-config";
+import { gameService, userService } from "../firebase-config";
 import useUser from "../hooks/useUser";
+import { useEffect } from "react";
+import { useState } from "react";
+import GamesCatalogue from "../components/GamesCatalogue";
+import Banner from "../components/Banner";
 
 const HomeScreen = () => {
   const user = useUser();
-  const navigate = useNavigate();
+
   return (
     <div>
       <Header />
-      <p>Home screen</p>
-      <p>Hello, {user?.email || "user"}</p>
-      <button onClick={() => userService.logout().then(navigate("/login"))}>
-        Log out
-      </button>
+      <Banner name={user?.displayName} />
+      <GamesCatalogue />
     </div>
   );
 };

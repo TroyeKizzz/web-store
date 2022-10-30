@@ -9,6 +9,7 @@
 .Header-links-div {
   display: flex;
   flex-direction: row;
+  margin: 0px 30px;
 }
 
 .Header-link-div {
@@ -17,6 +18,7 @@
 
 .Header-link {
   color: #ffffff;
+  margin: 0px;
 }
 
 .Header-link:hover {
