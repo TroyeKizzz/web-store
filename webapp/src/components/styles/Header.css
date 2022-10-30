@@ -1,0 +1,24 @@
+.Header-div {
+  width: 100%;
+  background-color: #1e81b0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Header-links-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.Header-link-div {
+  margin: 20px 10px;
+}
+
+.Header-link {
+  color: #ffffff;
+}
+
+.Header-link:hover {
+  color: #ff0000;
+}
