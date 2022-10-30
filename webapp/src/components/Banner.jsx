@@ -6,7 +6,7 @@ const Banner = (props) => {
     <div className="div-banner">
       <img src={bannerImage} alt="Banner" width="100%" />
       <a href="http://www.freepik.com" className="a-banner-license">
-        Designed by katemangostar / Freepik
+        Illustration designed by katemangostar / Freepik
       </a>
       <div className="div-banner-welcome">
         <p className="p-banner-welcome">

@@ -1,6 +1,7 @@
 .div-gamelist {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 600px;
+  max-width: 850px;
   margin: auto;
 }

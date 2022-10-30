@@ -12,10 +12,11 @@ import {
 class GameService {
   #gamesCollectionRef = collection(db, "games");
 
-  getGames = async (lastItemId, genre, orderByParameter) => {
+  getGames = async (lastItemId, genre, orderByParameter, orderDirection) => {
     let q = query(this.#gamesCollectionRef);
     if (lastItemId) q = query(q, startAfter(lastItemId));
-    if (orderByParameter) q = query(q, orderBy(orderByParameter));
+    if (orderByParameter)
+      q = query(q, orderBy(orderByParameter, orderDirection));
     if (genre) q = query(q, where("genre", "==", genre));
     q = query(q, limit(20));
 
