@@ -37,24 +37,27 @@ function GameRow(props) {
       </td>
       <td>€{props.game.game.price.toFixed(2)}</td>
       <td>
-        <FormControl fullWidth>
-          <InputLabel id="qty-select-label">Qty</InputLabel>
-          <Select
-            labelId="qty-select-label"
-            id="demo-simple-select"
-            value={props.game.qty}
-            label="Age"
-            onChange={(event) =>
-              setQtyInCart(props.game.game, event.target.value)
-            }
-          >
-            <MenuItem value={0}>0</MenuItem>
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-          </Select>
-        </FormControl>
+        {props.editable && (
+          <FormControl fullWidth>
+            <InputLabel id="qty-select-label">Qty</InputLabel>
+            <Select
+              labelId="qty-select-label"
+              id="demo-simple-select"
+              value={props.game.qty}
+              label="Age"
+              onChange={(event) =>
+                setQtyInCart(props.game.game, event.target.value)
+              }
+            >
+              <MenuItem value={0}>0</MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
+            </Select>
+          </FormControl>
+        )}
+        {!props.editable && props.game.qty}
       </td>
       <td>€{(props.game.game.price * props.game.qty).toFixed(2)}</td>
     </tr>

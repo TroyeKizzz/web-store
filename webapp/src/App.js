@@ -5,6 +5,7 @@ import RegistrationScreen from "./screens/RegistrationScreen";
 import HomeScreen from "./screens/HomeScreen";
 import OrderScreen from "./screens/OrderScreen";
 import OrderConfirmationScreen from "./screens/OrderConfirmationScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           path="/order-confirmation"
           element={<OrderConfirmationScreen />}
         />
+        <Route exact path="/my-orders" element={<OrderHistoryScreen />} />
       </Routes>
     </Router>
   );

@@ -32,6 +32,13 @@ const Header = () => {
             Home
           </Link>
         </div>
+        {user && (
+          <div className="Header-link-div">
+            <Link to="/my-orders" className="Header-link">
+              My orders
+            </Link>
+          </div>
+        )}
       </div>
       {user && (
         <div className="Header-links-div">

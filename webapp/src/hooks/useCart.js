@@ -6,7 +6,6 @@ const useCart = () => {
 
   const getCart = () => {
     setCart(userCart);
-    console.log(cart);
   };
 
   const addToCart = (game) => {

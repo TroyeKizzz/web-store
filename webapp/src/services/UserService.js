@@ -4,12 +4,20 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { collection, doc, runTransaction } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  runTransaction,
+  setDoc,
+} from "firebase/firestore";
 
 class UserService {
   #auth = auth;
   #user;
-  #ordersCollectionRef = collection(db, "orders");
+  #usersCollectionRef = collection(db, "users");
   constructor() {
     onAuthStateChanged(this.#auth, (currentUser) => {
       this.#user = currentUser;
@@ -43,6 +51,11 @@ class UserService {
       );
       this.#user = result.user;
       await updateProfile(this.#user, { displayName: data.name });
+      const userDoc = doc(this.#usersCollectionRef, result.user.uid);
+      await setDoc(userDoc, {
+        name: result.displayName,
+        createdAt: new Date(),
+      });
       return result.user;
     } catch (error) {
       console.log(error.message);
@@ -53,14 +66,16 @@ class UserService {
 
   async buyFromCart(cart) {
     try {
-      const newOrder = doc(this.#ordersCollectionRef);
+      const newOrder = doc(
+        collection(this.#usersCollectionRef, this.#user.uid, "orders")
+      );
       await runTransaction(db, async (transaction) => {
         const order = {
           items: cart.map((g) => ({
             game: doc(db, `/games/${g.game.id}`),
             qty: g.qty,
           })),
-          userId: this.#user.uid,
+          date: new Date(),
         };
         let updates = [];
         for (const index in cart) {
@@ -77,6 +92,28 @@ class UserService {
         updates.forEach((u) => transaction.update(u.ref, { quantity: u.qty }));
       });
       return newOrder;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async getMyOrders() {
+    try {
+      const docs = await getDocs(
+        collection(this.#usersCollectionRef, this.#user.uid, "orders")
+      );
+      return await Promise.all(
+        docs.docs.map(async (doc) => ({
+          ...doc.data(),
+          id: doc.id,
+          items: await Promise.all(
+            doc.data().items.map(async (row) => {
+              const game = await getDoc(row.game);
+              return { ...row, game: { ...game.data(), id: game.id } };
+            })
+          ),
+        }))
+      );
     } catch (e) {
       console.log(e);
     }
