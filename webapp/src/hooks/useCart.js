@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { registerListener, removeListener } from "../events";
 
+let userCart = [];
+
 const useCart = () => {
   const [cart, setCart] = useState(userCart);
 
@@ -49,5 +51,3 @@ const useCart = () => {
 };
 
 export default useCart;
-
-let userCart = [];
