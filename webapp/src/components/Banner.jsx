@@ -1,7 +1,9 @@
 import bannerImage from "../assets/banner.jpg";
+import useUser from "../hooks/useUser";
 import "./styles/Banner.css";
 
-const Banner = (props) => {
+const Banner = () => {
+  const user = useUser();
   return (
     <div className="div-banner">
       <img src={bannerImage} alt="Banner" width="100%" />
@@ -10,7 +12,7 @@ const Banner = (props) => {
       </a>
       <div className="div-banner-welcome">
         <p className="p-banner-welcome">
-          Welcome back, {props?.name || "user"}!
+          Welcome back, {user?.displayName || "user"}!
         </p>
       </div>
     </div>

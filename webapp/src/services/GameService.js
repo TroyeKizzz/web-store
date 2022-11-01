@@ -29,7 +29,7 @@ class GameService {
     const q = query(this.#gamesCollectionRef, where("id", "==", itemId));
     const result = await getDocs(q);
     console.log(result);
-    return result.docs;
+    return result.docs.map((doc) => ({ ...doc.data(), id: doc.id }))[0];
   };
 }
 

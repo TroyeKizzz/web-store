@@ -1,6 +1,10 @@
 import "./styles/GameCard.css";
+import { Button } from "@mui/material";
+import { emit } from "../events";
+import useCart from "../hooks/useCart";
 
 function GameCard(props) {
+  const [cart, { addToCart }] = useCart();
   return (
     <div className="div-game">
       <p className="p-game-title">{props.game.title}</p>
@@ -32,6 +36,15 @@ function GameCard(props) {
             </div>
           </div>
           <p className="p-game-in-stock">In stock: {props.game.quantity}</p>
+          <Button
+            variant="contained"
+            onClick={() => {
+              addToCart(props.game);
+              emit("cart-outdated");
+            }}
+          >
+            Add to cart
+          </Button>
         </div>
       </div>
     </div>

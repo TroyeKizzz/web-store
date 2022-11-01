@@ -1,0 +1,21 @@
+.orderlist-div {
+  display: flex;
+  justify-content: center;
+}
+
+.orderlist-span-total {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.orderlist-div-checkout-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.orderlist-div-checkout {
+  display: flex;
+  flex-direction: column;
+  justify-items: right;
+}
