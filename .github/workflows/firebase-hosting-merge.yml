@@ -18,3 +18,4 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_GAME_STORE_6CB68 }}"
           channelId: live
           projectId: game-store-6cb68
+          entrypoint: webapp
