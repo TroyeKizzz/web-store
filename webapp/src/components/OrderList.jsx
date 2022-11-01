@@ -52,7 +52,11 @@ const OrderList = (props) => {
                 props?.data?.items?.map(
                   (game) =>
                     game.qty > 0 && (
-                      <GameRow game={game} key={game.game.id} editable={true} />
+                      <GameRow
+                        game={game}
+                        key={game.game.id}
+                        editable={false}
+                      />
                     )
                 )}
               {!props?.data &&

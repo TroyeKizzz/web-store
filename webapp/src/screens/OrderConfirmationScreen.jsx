@@ -18,9 +18,9 @@ const OrderConfirmationScreen = () => {
       <div className="orderlist-div">
         <table>
           <tbody>
-            {location?.state?.map((g) => (
-              <GameRow game={g} key={g.game.id} />
-            ))}
+            {location?.state?.map(
+              (g) => g.qty > 0 && <GameRow game={g} key={g.game.id} />
+            )}
           </tbody>
         </table>
       </div>

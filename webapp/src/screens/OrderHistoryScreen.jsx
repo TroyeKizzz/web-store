@@ -17,6 +17,9 @@ const OrderHistoryScreen = () => {
       {orders?.map((order) => (
         <OrderList data={order} key={order.id} />
       ))}
+      {(!orders || orders?.length === 0) && (
+        <p style={{ textAlign: "center" }}>You haven't bought anything yet</p>
+      )}
     </div>
   );
 };

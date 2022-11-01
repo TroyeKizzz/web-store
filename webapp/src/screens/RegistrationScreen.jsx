@@ -2,6 +2,7 @@ import { useState } from "react";
 import { userService } from "../firebase-config";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+import { Button, TextField, FormControl } from "@mui/material";
 
 const RegistrationScreen = () => {
   const [data, setData] = useState({ email: "", name: "", password: "" });
@@ -43,30 +44,39 @@ const RegistrationScreen = () => {
           <p>{error}</p>
         </div>
       )}
-      <form onSubmit={register}>
-        <input
-          placeholder="Email"
-          name="email"
-          type="email"
-          onChange={valueChange}
-          value={data.email}
-        />
-        <input
-          placeholder="Password"
-          name="password"
-          type="password"
-          onChange={valueChange}
-          value={data.password}
-        />
-        <input
-          placeholder="Name"
-          name="name"
-          type="text"
-          onChange={valueChange}
-          value={data.name}
-        />
-        <button type="submit">Login</button>
-      </form>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <FormControl sx={{ marginTop: 6 }}>
+          <TextField
+            label="Email"
+            name="email"
+            type="email"
+            variant="outlined"
+            value={data.email}
+            onChange={valueChange}
+            sx={{ marginBottom: 1 }}
+          />
+          <TextField
+            label="Password"
+            name="password"
+            type="password"
+            variant="outlined"
+            value={data.password}
+            onChange={valueChange}
+            sx={{ marginBottom: 1 }}
+          />
+          <TextField
+            label="Name"
+            name="name"
+            variant="outlined"
+            value={data.name}
+            onChange={valueChange}
+            sx={{ marginBottom: 1 }}
+          />
+          <Button variant="contained" type="submit" onClick={register}>
+            Register
+          </Button>
+        </FormControl>
+      </div>
     </div>
   );
 };

@@ -5,7 +5,6 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import {
-  addDoc,
   collection,
   doc,
   getDoc,
@@ -53,7 +52,7 @@ class UserService {
       await updateProfile(this.#user, { displayName: data.name });
       const userDoc = doc(this.#usersCollectionRef, result.user.uid);
       await setDoc(userDoc, {
-        name: result.displayName,
+        name: data.name,
         createdAt: new Date(),
       });
       return result.user;

@@ -42,6 +42,7 @@ const GamesSearch = (props) => {
             <MenuItem value={"All"}>All</MenuItem>
             <MenuItem value={"Action-adventure"}>Action-adventure</MenuItem>
             <MenuItem value={"Sandbox"}>Sandbox</MenuItem>
+            <MenuItem value={"Survival"}>Survival</MenuItem>
           </Select>
         </FormControl>
       </div>
